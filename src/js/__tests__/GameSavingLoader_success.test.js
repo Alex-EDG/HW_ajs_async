@@ -1,17 +1,8 @@
 import GameSavingLoader from '../GameSavingLoader';
-import read from '../reader';
+import GameSaving from '../GameSaving';
 
+const obj = new GameSaving(9, 1546300800, { id: 1, name: 'Hitman', level: 10, points: 2000 });
 test('Проверка работы GameSavingLoader - success', async() => {
-  const expected = {
-    id: 9,
-    created: 1546300800,
-    userInfo: {
-      id: 1,
-      name: 'Hitman',
-      level: 10,
-      points: 2000
-    }
-  };
-  const received = await GameSavingLoader.load();
-  expect(received).toEqual(expected);
+
+  expect(await GameSavingLoader.load()).toEqual(obj);
 });
